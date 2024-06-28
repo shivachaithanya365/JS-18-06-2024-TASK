@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN-PAGE</title>
+    <style>
+        h1,
+        h3,
+        form {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>LOGIN HERE</h1>
+
+    <form>
+        <input type="text" id="username"> <br><br><br>
+        <input type="password" id="password"> <br><br><br>
+        <input type="submit" value="Login">
+    </form>
+
+    <h3>Not registered ? <a href="./register.html" target="_blank">Register here</a></h3>
+
+</body>
+<script>
+    let form = document.forms[0];
+
+    form.addEventListener("submit", (event) => {
+
+        let registeredUsername = localStorage.getItem("username");
+        let registeredPassword = localStorage.getItem("password");
+
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+        event.preventDefault();
+
+        if (username === "" || username.length <= 8) {
+            alert("Please enter a valid username more than 8 characters");
+            return;
+        }
+
+        if (password === "" || password.length <= 8) {
+            alert("Please enter a valid password more than 8 characters");
+            return;
+        }
+
+        if (username === password) {
+            alert("username and password cannot be same");
+            return;
+        }
+
+        if (username === registeredUsername) {
+            if (password === registeredPassword) {
+                alert("Login successful!");
+                form.reset();
+            } else {
+                alert("Password does not match");
+            }
+        } else {
+            alert("Username does not exist! Please register.");
+        }
+
+    });
+
+
+</script>
+
+</html>

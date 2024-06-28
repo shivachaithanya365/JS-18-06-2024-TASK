@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTER-PAGE</title>
+    <style>
+        h1,
+        h3,
+        form {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>REGISTER HERE</h1>
+
+    <form action="">
+        <input type="text" id="username"> <br><br><br>
+        <input type="password" id="password"> <br><br><br>
+        <input type="submit" value="Register">
+    </form>
+
+    <h3>Already registered ? <a href="./login.html" target="_blank">Login here</a></h3>
+
+</body>
+<script>
+    let form = document.forms[0];
+
+    form.addEventListener("submit", (event) => {
+
+        event.preventDefault();
+
+        username = document.getElementById("username").value;
+        password = document.getElementById("password").value;
+
+        if (username == "" || username <= 8) {
+            alert("Please enter a valid username more than 8 characters")
+            return;
+        }
+        else {
+            localStorage.setItem("username", username);
+        }
+
+        if (password == "" || username <= 8) {
+            alert("Please enter a valid password more than 8 characters")
+            return;
+        }
+        else {
+            localStorage.setItem("password", password);
+        }
+
+        if (username === password) {
+            alert("username and password cannot be same");
+            return;
+        }
+
+        form.reset();
+
+        alert("Registered successfully")
+    });
+
+</script>
+
+</html>

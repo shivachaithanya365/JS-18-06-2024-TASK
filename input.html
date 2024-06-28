@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM-VALIDATION</title>
+    <style>
+        h1,
+        h3,
+        form {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>LOGIN PAGE</h1>
+
+    <form>
+        <input type="text" name="username1" placeholder="username1"> <br><br><br>
+        <input type="text" name="username2" placeholder="username2"> <br><br><br>
+        <input type="text" name="username3" placeholder="username3"> <br><br><br>
+        <input type="text" name="username4" placeholder="username4"> <br><br><br>
+        <input type="password" name="password" placeholder="password"> <br><br><br>
+        <input type="submit" id="submit">
+    </form>
+
+    <script>
+        let form = document.forms[0];
+
+        form.addEventListener("submit", function (event) {
+
+            if (form.elements[0].value == "" || form.elements[0].value == "" || form.elements[1].value == "" || form.elements[2].value == "" || form.elements[3].value == "" || form.elements[4].value == "") {
+
+                alert("Please enter all inputs")
+            }
+            else {
+
+                let username1 = form.elements[0].value;
+                let username2 = form.elements[1].value;
+                let username3 = form.elements[2].value;
+                let username4 = form.elements[3].value;
+                let password = form.elements[4].value;
+
+                localStorage.setItem("username1", username1);
+                localStorage.setItem("username2", username2);
+                localStorage.setItem("username3", username3);
+                localStorage.setItem("username4", username4);
+                localStorage.setItem("password", password);
+
+                event.preventDefault();
+
+                alert("form submitted successfully");
+
+                window.location.href = "./credentials.html";
+            }
+
+
+        });
+
+    </script>
+
+</body>
+
+</html>
